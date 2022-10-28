@@ -46,9 +46,7 @@ public class RentalService : EntityService<RentalPeriod>, IRentalService
                 .AddError($"Rental period was started at {period.StartTime} and cannot end at {time}");
 
         period.EndTime = time;
-
-        scooter.IsRented = false;
-        Update(scooter);
+        period.Scooter.IsRented = false;
 
         return Update(period);
     }
