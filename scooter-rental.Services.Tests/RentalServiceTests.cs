@@ -289,6 +289,7 @@ public class RentalServiceTests : TestWithSqlite
                       .Sum(x => IncomeCalculator.GetIncome(x.StartTime, _testTime, x.PricePerMinute))
                   + incompleteRentals.Where(x => x.StartTime.Year == _testTime.Year).ToList()
                       .Sum(x => IncomeCalculator.GetIncome(x.StartTime, _testTime, x.PricePerMinute));
+        
         //Assert
         _rentalService.GetIncome(_testTime.Year, true, _testTime).Should().Be(sum);
     }
